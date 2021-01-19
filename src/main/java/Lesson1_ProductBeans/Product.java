@@ -11,16 +11,16 @@ public class Product {
 1. Есть класс Product (id, название, цена).
 2. Товары хранятся в бине ProductRepository, в виде Map<Product>, при старте в него нужно добавить 5 любых товаров.
 3. ProductRepository позволяет получить весь список или один товар по id.
-4. Создаем бин Cart (который обращается к ProductRepository), в который можно добавлять и удалять товары по id.
+4. Создаем бин Cart (который обращается к ProductRepository - методом - на вход id), в который можно добавлять и удалять товары по id.
 5. Написать консольное приложение, позволяющее управлять корзиной.
 
 */
 
     private final String id;
     private final String name;
-    private final String cost;
+    private final float cost;
 
-    public Product(String id, String title, String cost) {
+    public Product(String id, String title, float cost) {
         this.id = id;
         this.name = title;
         this.cost = cost;
@@ -34,7 +34,7 @@ public class Product {
         return name;
     }
 
-    public String getCost() {
+    public float getCost() {
         return cost;
     }
 
