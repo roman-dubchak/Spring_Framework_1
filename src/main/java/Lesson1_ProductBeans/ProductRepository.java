@@ -21,7 +21,7 @@ public class ProductRepository implements ProductRepositoryInterface {
         mapProduct.put(product3.getId(), product3);
         mapProduct.put(product4.getId(), product4);
         mapProduct.put(product5.getId(), product5);
-        System.out.println(Arrays.toString(mapProduct.values().toArray()));
+        System.out.println("The repository contains: " + Arrays.toString(mapProduct.values().toArray()));
     }
 
 //    Вариант добавляения товаров при вызове конструктора
