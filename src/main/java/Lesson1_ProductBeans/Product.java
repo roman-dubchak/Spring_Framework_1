@@ -16,17 +16,17 @@ public class Product {
 
 */
 
-    private final String id;
+    private final Integer id;
     private final String name;
     private final float cost;
 
-    public Product(String id, String title, float cost) {
+    public Product(Integer id, String title, float cost) {
         this.id = id;
         this.name = title;
         this.cost = cost;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -38,4 +38,10 @@ public class Product {
         return cost;
     }
 
+    @Override
+    public String toString() {
+        return "Product: id - " + id
+                + "; title - " + name
+                + "; cost - " + cost + "\n";
+    }
 }
