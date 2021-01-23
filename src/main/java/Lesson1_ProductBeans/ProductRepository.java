@@ -1,6 +1,8 @@
 package Lesson1_ProductBeans;
 
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +17,7 @@ public class ProductRepository implements ProductRepositoryInterface {
     private Map<Integer, Product> mapProduct = new HashMap<Integer, Product>();
 
     @Override
+    @PostConstruct
     public void addFifeProduct() {
         mapProduct.put(product1.getId(), product1);
         mapProduct.put(product2.getId(), product2);

@@ -18,7 +18,7 @@ public class Init implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        productRepository.addFifeProduct();
+//        productRepository.addFifeProduct();
         scannerAp.scannerIdAdd();
         cart.addToCart(scannerAp.getId(), productRepository.getProduct(scannerAp.getId()));
 
