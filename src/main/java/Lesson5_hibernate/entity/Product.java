@@ -1,10 +1,22 @@
-package Lesson5_hibernate;
+package Lesson5_hibernate.entity;
 
-@Entite
+import javax.persistence.*;
+
+@Entity
+@Table(name = "product")
+@NamedQueries(
+        @NamedQuery(name = "Product.findAll", query = "select p from Product p"))
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
     private Long id;
+
+    @Column(name = "title", length = 128)
     private String title;
+
+    @Column(name = "price")
     private int price;
 
     public Product() {
@@ -38,5 +50,10 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Product: id - %d, title - %s, price- %d", + id, title, price);
     }
 }
