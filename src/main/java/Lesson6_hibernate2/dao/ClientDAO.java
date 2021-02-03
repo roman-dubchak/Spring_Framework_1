@@ -53,7 +53,7 @@ public class ClientDAO {
         return client;
     }
 
-    public List<Client> findAll(){
+    public List<Client> findAllClients(){
         return clientFactory.manager.createNamedQuery("Client.findAll", Client.class).getResultList();
     }
 

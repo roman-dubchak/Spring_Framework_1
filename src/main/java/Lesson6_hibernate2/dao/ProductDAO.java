@@ -57,7 +57,7 @@ public class ProductDAO {
         return product;
     }
 
-    public List<Product> findAll(){
+    public List<Product> findAllProducts(){
         return productFactory.manager.createNamedQuery("Product.findAll", Product.class).getResultList();
     }
 

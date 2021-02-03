@@ -19,11 +19,18 @@ public class Client {
     @Column (name = "name", length = 128, nullable = false)
     private String name;
 
-
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private Product product;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
 
     public Client() {
     }
