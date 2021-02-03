@@ -22,18 +22,10 @@ public class Product {
 
     @Column(name = "price")
     private int price;
-//
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "product_id")
-//    private Client client;
-//
-//    public Client getClient() {
-//        return client;
-//    }
-//
-//    public void setClient(Client client) {
-//        this.client = client;
-//    }
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    List<Client> clientList;
+
 
     public Product() {
     }

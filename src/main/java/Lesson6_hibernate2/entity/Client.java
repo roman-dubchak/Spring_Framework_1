@@ -19,16 +19,11 @@ public class Client {
     @Column (name = "name", length = 128, nullable = false)
     private String name;
 
-//    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    List<Product> productList;
-//
-//    public List<Product> getProductList() {
-//        return productList;
-//    }
-//
-//    public void setProductList(List<Product> productList) {
-//        this.productList = productList;
-//    }
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     public Client() {
     }
