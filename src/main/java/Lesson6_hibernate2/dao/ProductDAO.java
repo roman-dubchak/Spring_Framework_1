@@ -1,11 +1,14 @@
 package Lesson6_hibernate2.dao;
 
+import Lesson6_hibernate2.entity.Client;
 import Lesson6_hibernate2.entity.Product;
+import com.sun.xml.bind.v2.runtime.output.SAXOutput;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -62,20 +65,41 @@ public class ProductDAO {
         return productFactory.manager.createNamedQuery("Product.findAll", Product.class).getResultList();
     }
 
-    public List<Product> findAllProductByIdClient (Long id){
-        Query query = productFactory.manager.createQuery("select id from product_buy where client_id = :id");
-        query.setParameter("id", id);
+    public List<Product> findAllProductByIdClient(Long idClient){
+        Query query = productFactory.manager.createQuery("select id from Product where client_id = :id");
+        query.setParameter("id", idClient);
         List<Product> productListFindByIdClient;
         try{
             productListFindByIdClient = query.getResultList();
+            System.out.println(productListFindByIdClient);
         } catch (NoResultException e){
-            System.out.println("Not find list product by id: " + id);
+            System.out.println("Not find list product by id: " + idClient);
             productListFindByIdClient = new ArrayList<>();
         }
         return productListFindByIdClient;
     }
 
-    public static void main(String[] args) {
-//        findById(1L);
+    public List<Product> findAllProductByIdClientTwoVar(Long idClient){
+        Query query = productFactory.manager.createQuery("select id from Product where client_id = :id");
+        query.setParameter("id", idClient);
+        List<Product> productListFindByIdClient;
+        try{
+            productListFindByIdClient = query.getResultList();
+            System.out.println(productListFindByIdClient);
+        } catch (NoResultException e){
+            System.out.println("Not find list product by id: " + idClient);
+            productListFindByIdClient = new ArrayList<>();
+        }
+        return productListFindByIdClient;
     }
+
+
+    public List<String> findAllClientByIdProduct(Long id){
+        Product product = findById(id);
+        List<String> clientList = new ArrayList<>();
+        clientList.add(product.getClient().getName());
+        System.out.println("productList: " + clientList);
+        return clientList;
+    }
+
 }

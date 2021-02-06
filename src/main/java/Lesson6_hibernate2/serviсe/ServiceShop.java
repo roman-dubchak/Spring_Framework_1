@@ -2,11 +2,7 @@ package Lesson6_hibernate2.serviсe;
 
 import Lesson6_hibernate2.dao.ClientDAO;
 import Lesson6_hibernate2.dao.ProductDAO;
-import Lesson6_hibernate2.entity.Product;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ServiceShop {
@@ -53,24 +49,19 @@ public class ServiceShop {
 
     public static void main(String[] args) {
         productDAO = new ProductDAO();
-//        productDAO.findById(1L);
-        // метод findAllProductByIdClient
+        productDAO.findById(1L);
+
         clientDAO = new ClientDAO();
-//        clientDAO.findById(1L);
-//
+        clientDAO.findById(1L);
+
         productDAO.findAllProductByIdClient(1L);
+
+        productDAO.findAllClientByIdProduct(1L);
 
 //        findAllProductByIdClient(1L);
 
 
         // метод findAllClientByIdProduct
     }
-
-//    private static List<Product> findAllProductByIdClient(Long idClient) {
-//        productDAO.findAllProducts();
-//
-//
-//        return List<Product>;
-//    }
 
 }

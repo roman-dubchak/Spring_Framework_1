@@ -34,6 +34,7 @@ public class Product {
     public void setClient(Client client) {
         this.client = client;
     }
+//    Изначально наоборот сделал
 //    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    List<Client> clientList;
 //

@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -53,8 +54,6 @@ public class ClientDAO {
         clientFactory.manager.getTransaction().commit();
         return client;
     }
-
-
 
     public List<Client> findAllClients(){
         return clientFactory.manager.createNamedQuery("Client.findAll", Client.class).getResultList();
