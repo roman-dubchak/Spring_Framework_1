@@ -93,11 +93,10 @@ public class ProductDAO {
         return productListFindByIdClient;
     }
 
-
-    public List<String> findAllClientByIdProduct(Long id){
+    public List<Client> findAllClientByIdProduct(Long id){
         Product product = findById(id);
-        List<String> clientList = new ArrayList<>();
-        clientList.add(product.getClient().getName());
+        List<Client> clientList = new ArrayList<>();
+        clientList.add(product.getClient());
         System.out.println("productList: " + clientList);
         return clientList;
     }

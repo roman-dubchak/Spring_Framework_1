@@ -47,7 +47,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return String.format("Client: id - %d, name - %s, product id.", id, name);
+        return String.format("Client: id - %d, name - %s.", id, name);
     }
 
     public Client(Long id, String name) {
