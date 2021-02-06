@@ -1,6 +1,7 @@
 package Lesson6_hibernate2.dao;
 
 import Lesson6_hibernate2.entity.Client;
+import Lesson6_hibernate2.entity.Product;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
 
@@ -52,6 +53,8 @@ public class ClientDAO {
         clientFactory.manager.getTransaction().commit();
         return client;
     }
+
+
 
     public List<Client> findAllClients(){
         return clientFactory.manager.createNamedQuery("Client.findAll", Client.class).getResultList();

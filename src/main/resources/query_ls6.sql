@@ -17,3 +17,9 @@ insert into public.client (name, product_id) values ('Pavel', 1), ('Nikolay', 2)
 
 select * from public.client c
 left join public.product_buy p ON c.product_id = p.id;
+
+alter table product_buy add column client_id integer;
+alter table product_buy add foreign key(client_id) references client(id);
+
+select * from public.client c
+left join public.product_buy p ON c.id = p.client_id;

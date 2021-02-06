@@ -53,10 +53,12 @@ public class ServiceShop {
 
     public static void main(String[] args) {
         productDAO = new ProductDAO();
-        productDAO.findById(1L);
+//        productDAO.findById(1L);
         // метод findAllProductByIdClient
         clientDAO = new ClientDAO();
-        clientDAO.findById(1L);
+//        clientDAO.findById(1L);
+//
+        productDAO.findAllProductByIdClient(1L);
 
 //        findAllProductByIdClient(1L);
 

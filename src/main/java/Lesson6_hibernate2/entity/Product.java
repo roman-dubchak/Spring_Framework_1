@@ -23,16 +23,27 @@ public class Product {
     @Column(name = "price")
     private int price;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    List<Client> clientList;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
+    private Client client;
 
-    public List<Client> getClientList() {
-        return clientList;
+    public Client getClient() {
+        return client;
     }
 
-    public void setClientList(List<Client> clientList) {
-        this.clientList = clientList;
+    public void setClient(Client client) {
+        this.client = client;
     }
+//    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    List<Client> clientList;
+//
+//    public List<Client> getClientList() {
+//        return clientList;
+//    }
+//
+//    public void setClientList(List<Client> clientList) {
+//        this.clientList = clientList;
+//    }
 
     public Product() {
     }

@@ -5,6 +5,7 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -59,6 +60,19 @@ public class ProductDAO {
 
     public List<Product> findAllProducts(){
         return productFactory.manager.createNamedQuery("Product.findAll", Product.class).getResultList();
+    }
+
+    public List<Product> findAllProductByIdClient (Long id){
+        Query query = productFactory.manager.createQuery("select id from product_buy where client_id = :id");
+        query.setParameter("id", id);
+        List<Product> productListFindByIdClient;
+        try{
+            productListFindByIdClient = query.getResultList();
+        } catch (NoResultException e){
+            System.out.println("Not find list product by id: " + id);
+            productListFindByIdClient = new ArrayList<>();
+        }
+        return productListFindByIdClient;
     }
 
     public static void main(String[] args) {
