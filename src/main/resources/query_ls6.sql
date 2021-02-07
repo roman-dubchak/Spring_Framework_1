@@ -23,3 +23,7 @@ alter table product_buy add foreign key(client_id) references client(id);
 
 select * from public.client c
 left join public.product_buy p ON c.id = p.client_id;
+
+// для даты создания покупки продукта
+ALTER TABLE product_buy ADD COLUMN created_at TIMESTAMP;
+ALTER TABLE product_buy ALTER COLUMN created_at SET DEFAULT now();

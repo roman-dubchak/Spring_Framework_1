@@ -1,9 +1,10 @@
 package Lesson6_hibernate2.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.util.List;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "product_buy")
@@ -22,6 +23,10 @@ public class Product {
 
     @Column(name = "price")
     private int price;
+
+    @Column(name = "created_date", updatable=false)
+    @CreationTimestamp
+    private Timestamp created_at;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
@@ -49,7 +54,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String title, int price) {
+    public Product(Long id, String title, int price, Timestamp created_at) {
         this.id = id;
         this.title = title;
         this.price = price;

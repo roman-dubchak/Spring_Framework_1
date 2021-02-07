@@ -58,10 +58,7 @@ public class ServiceShop {
 
         productDAO.findAllClientByIdProduct(1L);
 
-//        findAllProductByIdClient(1L);
 
-
-        // метод findAllClientByIdProduct
     }
 
 }

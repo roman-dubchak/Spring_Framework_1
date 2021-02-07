@@ -65,40 +65,30 @@ public class ProductDAO {
         return productFactory.manager.createNamedQuery("Product.findAll", Product.class).getResultList();
     }
 
-    public List<Product> findAllProductByIdClient(Long idClient){
+    // Здесь сибираем лист лонгов - id продуктов
+    public List<Long> findAllProductByIdClient(Long idClient){
         Query query = productFactory.manager.createQuery("select id from Product where client_id = :id");
         query.setParameter("id", idClient);
-        List<Product> productListFindByIdClient;
+        List<Long> productIdList;
         try{
-            productListFindByIdClient = query.getResultList();
-            System.out.println(productListFindByIdClient);
+            productIdList = query.getResultList();
+            System.out.println(productIdList);
         } catch (NoResultException e){
             System.out.println("Not find list product by id: " + idClient);
-            productListFindByIdClient = new ArrayList<>();
+            productIdList = new ArrayList<>();
         }
-        return productListFindByIdClient;
+        return productIdList;
     }
 
-    public List<Product> findAllProductByIdClientTwoVar(Long idClient){
-        Query query = productFactory.manager.createQuery("select id from Product where client_id = :id");
-        query.setParameter("id", idClient);
-        List<Product> productListFindByIdClient;
-        try{
-            productListFindByIdClient = query.getResultList();
-            System.out.println(productListFindByIdClient);
-        } catch (NoResultException e){
-            System.out.println("Not find list product by id: " + idClient);
-            productListFindByIdClient = new ArrayList<>();
-        }
-        return productListFindByIdClient;
-    }
-
-    public List<Client> findAllClientByIdProduct(Long id){
+    // Здесь списко клиентов, но по сути получается достать только 1 клиента
+    // Пытался использовать запрос select id from product_buy where client_id = 1;
+    // но нельзя создать поле client_id, так как уже указано как вшешний ключ в JOIN
+    public List<Long> findAllClientByIdProduct(Long id){
         Product product = findById(id);
-        List<Client> clientList = new ArrayList<>();
-        clientList.add(product.getClient());
-        System.out.println("productList: " + clientList);
-        return clientList;
+        List<Long> clientIdtList = new ArrayList<>();
+        clientIdtList.add(product.getClient().getId());
+        System.out.println("productList: " + clientIdtList);
+        return clientIdtList;
     }
 
 }
