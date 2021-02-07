@@ -1,10 +1,17 @@
 spring:
+
   datasourse:
+    platform: postgres
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: rodman129
+    driver-class-name: org.postgresql.Driver
 
   jpa:
+    database: POSTGRESQL
     show-sql: true
   liquibase:
     change-log: classpath:db/liquibase-changeLog.xml
+
+server:
+  port: 8084

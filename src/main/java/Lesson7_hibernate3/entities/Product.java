@@ -3,12 +3,12 @@ package Lesson7_hibernate3.entities;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "product_jpa")
+@Table(name = "product_liq")
 public class Product {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id", nullable = false, updatable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "title")
     private String title;
@@ -16,13 +16,13 @@ public class Product {
     @Column(name = "price")
     private Integer price;
 
-    public Product(Integer id, String title, Integer cost) {
+    public Product(Long id, String title, Integer cost) {
         this.id = id;
         this.title = title;
         this.price = cost;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,7 +37,7 @@ public class Product {
     public Product() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
