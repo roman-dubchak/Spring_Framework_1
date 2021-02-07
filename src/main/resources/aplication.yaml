@@ -1,0 +1,10 @@
+spring:
+  datasourse:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: rodman129
+
+  jpa:
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/liquibase-changeLog.xml

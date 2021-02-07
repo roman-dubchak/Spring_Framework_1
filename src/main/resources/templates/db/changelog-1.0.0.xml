@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+   http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet author="dubchak" id="drop_column_is_empty">
+        <dropColumn tableName="product_jpa">
+            <column name="is_empty"/>
+        </dropColumn>
+    </changeSet>
+
+    <changeSet author="dubchak" id="create_20_products">
+        <comment>Of course we could use 'insert' tag instead of direct sql query</comment>
+        <sql>insert into product_jpa () values ('2012-08-15 00:00:00', 'It was cool!')</sql>
+    </changeSet>
+
+</databaseChangeLog>
