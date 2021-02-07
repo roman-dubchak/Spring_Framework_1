@@ -52,12 +52,20 @@ public class MainController {
         return "redirect:/shop";
     }
 
+
+    @GetMapping("/form")
+    public String getForm(Model model){
+        Product product = new Product();
+        model.addAttribute("product", product);
+        System.out.println("Get product - " + product);
+        return "form";
+    }
+
     @PostMapping("/form")
     @ResponseBody
     public String create(@RequestBody Product product, Model model){
-        product = new Product();
         System.out.println("POST product - " + product);
-        model.addAttribute("product", product);
+//        model.addAttribute("product", product);
         repo.save(product);
         return "result";
     }
