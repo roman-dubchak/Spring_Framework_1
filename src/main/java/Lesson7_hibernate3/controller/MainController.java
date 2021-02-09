@@ -31,17 +31,15 @@ public class MainController {
 
     @GetMapping("/products/{id}")
     public String findProductById(Model model, @PathVariable("id") Long id){
-        Optional <Product> selectProduct = repo.findById(id);
-        model.addAttribute("selectProduct", selectProduct);
-        System.out.println("Find by " + id + " is product: " + selectProduct);
+        model.addAttribute("selectProduct", repo.findById(id));
+        System.out.println("Find by " + id + " is product: " + repo.findById(id));
         return "products";
     }
 
     @GetMapping("/shop")
     public String findAllProduct(Model model){
-        Iterable <Product> allProduct = repo.findAll();
-        model.addAttribute("products", allProduct);
-        System.out.println("Find by all product: " + allProduct);
+        model.addAttribute("products", repo.findAll());
+        System.out.println("Find by all product: " + repo.findAll());
         return "shop";
     }
 
@@ -54,7 +52,7 @@ public class MainController {
 
 
     @GetMapping("/form")
-    public String getForm(Model model){
+    public String form(Model model){
         Product product = new Product();
         model.addAttribute("product", product);
         System.out.println("Get product - " + product);
@@ -62,11 +60,11 @@ public class MainController {
     }
 
     @PostMapping("/form")
-    @ResponseBody
-    public String create(@RequestBody Product product, Model model){
+//    @ResponseBody
+    public String form(Product product, Model model){
         System.out.println("POST product - " + product);
 //        model.addAttribute("product", product);
         repo.save(product);
-        return "result";
+        return "redirect:/shop";
     }
 }

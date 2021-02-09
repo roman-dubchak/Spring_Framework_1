@@ -24,19 +24,18 @@
                 <article class="card-body">
                     <form th:action="@{/form}" th:object="${product}" method="post">
 <!--                        <input th:field="*{id}" type="hidden" class="form-control">-->
-
                         <div class="form-row">
-                            <div class="col form-group">
-                                <label>id</label>
-                                <input th:field="*{id}" type="id" class="form-control" placeholder="">
-                            </div>
+<!--                            <div class="col form-group">-->
+<!--                                <label>id</label>-->
+<!--                                <input th:field="*{id}" type="id" class="form-control" placeholder="">-->
+<!--                            </div>-->
                             <div class="col form-group">
                                 <label>Name</label>
-                                <input th:field="*{title}" type="title" class="form-control" placeholder="">
+                                <input th:field="*{title}" type="title" class="form-control" placeholder="title">
                             </div>
                             <div class="col form-group">
                                 <label>Price</label>
-                                <input th:field="*{price}" type="price" class="form-control" placeholder="">
+                                <input th:field="*{price}" type="price" class="form-control" placeholder="price">
                             </div>
                         </div>
 
