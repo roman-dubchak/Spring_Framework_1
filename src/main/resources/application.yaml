@@ -1,17 +1,14 @@
+server:
+  port: 8083
 spring:
-
-  datasourse:
-    platform: postgres
+  datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: rodman129
     driver-class-name: org.postgresql.Driver
-
   jpa:
-    database: POSTGRESQL
     show-sql: true
+    generate-ddl: true
+    hibernate.ddl-auto: none
   liquibase:
-    change-log: classpath:db/liquibase-changeLog.xml
-
-server:
-  port: 8084
+    change-log: classpath:db-liq/liquibase-changeLog.xml
