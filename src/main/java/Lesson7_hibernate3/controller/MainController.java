@@ -2,6 +2,7 @@ package Lesson7_hibernate3.controller;
 
 import Lesson7_hibernate3.entities.Product;
 import Lesson7_hibernate3.repo.Repo;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -50,21 +51,24 @@ public class MainController {
         return "redirect:/shop";
     }
 
-
     @GetMapping("/form")
-    public String form(Model model){
-        Product product = new Product();
+    public String form(Product product, Model model){
         model.addAttribute("product", product);
-        System.out.println("Get product - " + product);
         return "form";
     }
 
-    @PostMapping("/form")
-//    @ResponseBody
-    public String form(Product product, Model model){
-        System.out.println("POST product - " + product);
-//        model.addAttribute("product", product);
+    @PostMapping(value = "/form", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String form(Product product){
         repo.save(product);
+        System.out.println("POST save product - " + product);
         return "redirect:/shop";
     }
+
+//    @PostMapping("/form")
+//    @ResponseBody
+//    public Long saveProduct(@RequestBody Product product, Model model){
+////        model.addAttribute("product", product);
+//        System.out.println("POST saveProduct product - " + product);
+//        return repo.save(product).getId();
+//    }
 }
