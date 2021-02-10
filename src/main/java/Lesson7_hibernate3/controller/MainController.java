@@ -2,6 +2,7 @@ package Lesson7_hibernate3.controller;
 
 import Lesson7_hibernate3.entities.Product;
 import Lesson7_hibernate3.repo.Repo;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,17 +33,36 @@ public class MainController {
 
     @GetMapping("/products/{id}")
     public String findProductById(Model model, @PathVariable("id") Long id){
-        model.addAttribute("selectProduct", repo.findById(id));
+        model.addAttribute("selectProduct", repo.findById(id).get());
         System.out.println("Find by " + id + " is product: " + repo.findById(id));
         return "products";
     }
 
     @GetMapping("/shop")
-    public String findAllProduct(Model model){
-        model.addAttribute("products", repo.findAll());
+    public String findAllProduct(Model model, @RequestParam(defaultValue = "0") int page){
+//        PageRequest pageRequest = PageRequest.of(page, 4);
+        model.addAttribute("products", repo.findAll(PageRequest.of(page, 4)));
         System.out.println("Find by all product: " + repo.findAll());
+        model.addAttribute("currentPage", page);
         return "shop";
+//        return findPaginated(1, model);
     }
+
+//    @GetMapping("/page/{pageNo}")
+//    public String findPaginated (@PathVariable("pageNo") int page, Model model){
+//        int pageSize = 4;
+//
+//        Page<Product> productPage = repo.findPaginated(page, pageSize);
+//        List<Product> productsList = productPage.getContent();
+//
+//        model.addAttribute("currentPage", page);
+//        model.addAttribute("totalPages", productPage.getTotalPages());
+//        model.addAttribute("totalItems", productPage.getTotalElements());
+//        model.addAttribute("productsList", productsList);
+//
+//        return "shop";
+//    }
+
 
     @GetMapping("/products/delete/{id}")
     public String deleteProductById(Model model, @PathVariable("id") Long id){
@@ -50,6 +70,19 @@ public class MainController {
         System.out.println("Delete product by id: " + id);
         return "redirect:/shop";
     }
+
+    @PostMapping("/save")
+    public String saveProduct(Product product){
+        repo.save(product);
+        System.out.println("Delete product by id: " + product.getId());
+        return "redirect:/shop";
+    }
+
+//    @GetMapping("/findOne")
+//    @ResponseBody
+//    public Product findOne (Long Id){
+//        return repo.findOne(id);
+//    }
 
     @GetMapping("/form")
     public String form(Product product, Model model){

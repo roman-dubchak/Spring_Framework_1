@@ -10,20 +10,23 @@
 <body>
 <div class="container">
     <h1>Shop</h1>
+    <!--/*@thymesVar id="products" type="Lesson7_hibernate3"*/-->
+    <!--/*@thymesVar id="size" type="Lesson7_hibernate3.entities.Product"*/-->
     <span th:if="${products.size() == 0}">Products List is empty</span>
     <table th:if="${products.size() > 0}" class="table table-hover">
         <thead class="thead-dark">
         <tr>
-            <td>ID</td>
-            <td>Title</td>
-            <td>Price</td>
-            <td></td>
-            <td></td>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="product : ${products}">
-            <td th:text="${product.id}"/>
+            <!--/*@thymesVar id="id" type="Lesson7_hibernate3.entities.Product"*/-->
+            <td th:text="${product.id}"></td>
             <td th:text="${product.title}"/>
             <td th:text="${product.price}"/>
             <td><a class="btn btn-secondary" th:href="@{'/products/' + ${product.id}}">Details</a></td>
@@ -31,6 +34,14 @@
         </tr>
         </tbody>
     </table>
+
+    <ul class="nav nav-pills">
+        <il class="nav-item"
+            th:each="i : ${#numbers.sequence(0, products.totalPages - 1)}">
+            <a th:href="@{/(page=${i})}" th:text="${i}" class="nav-link"></a>
+        </il>
+    </ul>
+
 </div>
 </body>
 </html>
