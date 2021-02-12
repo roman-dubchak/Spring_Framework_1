@@ -40,28 +40,11 @@ public class MainController {
 
     @GetMapping("/shop")
     public String findAllProduct(Model model, @RequestParam(defaultValue = "0") int page){
-//        PageRequest pageRequest = PageRequest.of(page, 4);
-        model.addAttribute("products", repo.findAll(PageRequest.of(page, 4)));
+        model.addAttribute("products", repo.findAll(PageRequest.of(page, 5)));
         System.out.println("Find by all product: " + repo.findAll());
         model.addAttribute("currentPage", page);
         return "shop";
-//        return findPaginated(1, model);
     }
-
-//    @GetMapping("/page/{pageNo}")
-//    public String findPaginated (@PathVariable("pageNo") int page, Model model){
-//        int pageSize = 4;
-//
-//        Page<Product> productPage = repo.findPaginated(page, pageSize);
-//        List<Product> productsList = productPage.getContent();
-//
-//        model.addAttribute("currentPage", page);
-//        model.addAttribute("totalPages", productPage.getTotalPages());
-//        model.addAttribute("totalItems", productPage.getTotalElements());
-//        model.addAttribute("productsList", productsList);
-//
-//        return "shop";
-//    }
 
 
     @GetMapping("/products/delete/{id}")
@@ -78,11 +61,11 @@ public class MainController {
         return "redirect:/shop";
     }
 
-//    @GetMapping("/findOne")
-//    @ResponseBody
-//    public Product findOne (Long Id){
-//        return repo.findOne(id);
-//    }
+    @GetMapping("/findOne")
+    @ResponseBody
+    public Product findOne (Long id){
+        return repo.findById(id).get();
+    }
 
     @GetMapping("/form")
     public String form(Product product, Model model){
@@ -97,11 +80,4 @@ public class MainController {
         return "redirect:/shop";
     }
 
-//    @PostMapping("/form")
-//    @ResponseBody
-//    public Long saveProduct(@RequestBody Product product, Model model){
-////        model.addAttribute("product", product);
-//        System.out.println("POST saveProduct product - " + product);
-//        return repo.save(product).getId();
-//    }
 }

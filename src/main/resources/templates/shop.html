@@ -11,7 +11,7 @@
 <div class="container">
     <h1>Shop</h1>
     <!--/*@thymesVar id="products" type="Lesson7_hibernate3"*/-->
-    <!--/*@thymesVar id="size" type="Lesson7_hibernate3.entities.Product"*/-->
+    <!--/*@thymesVar id="size" type="Lesson7_hibernate3.controller.MainController"*/-->
     <span th:if="${products.size() == 0}">Products List is empty</span>
     <table th:if="${products.size() > 0}" class="table table-hover">
         <thead class="thead-dark">
@@ -35,11 +35,14 @@
         </tbody>
     </table>
 
+    <hr/>
     <ul class="nav nav-pills">
-        <il class="nav-item"
+        <!--/*@thymesVar id="totalPages" type="Lesson7_hibernate3.entities.Product"*/-->
+        <li class="nav-item"
             th:each="i : ${#numbers.sequence(0, products.totalPages - 1)}">
-            <a th:href="@{/(page=${i})}" th:text="${i}" class="nav-link"></a>
-        </il>
+            <a th:href="@{/shop(page=${i})}" th:text="${i}" class="nav-link"
+               th:classappend="(${currentPage} == ${i} ? 'active':'')"></a>
+        </li>
     </ul>
 
 </div>
