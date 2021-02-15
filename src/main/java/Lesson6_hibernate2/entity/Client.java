@@ -1,6 +1,7 @@
 package Lesson6_hibernate2.entity;
 
 import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Client {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
-    @Column (name = "name", length = 128, nullable = false)
+    @Column(name = "name", length = 128, nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

@@ -30,7 +30,7 @@ public class MainController {
     }
 
     @GetMapping("")
-    public String shopPage(Model model){
+    public String shopPage(Model model) {
         List<Product> allProducts = productService.getListProducts();
         model.addAttribute("products", allProducts);
         return "index";
@@ -38,7 +38,7 @@ public class MainController {
 
     //    @RequestMapping(value = "/form", method = RequestMethod.GET)
     @RequestMapping(value = "/form", method = RequestMethod.GET)
-    public String getForm(Model model){
+    public String getForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
         System.out.println("Get product - " + product);
@@ -47,7 +47,7 @@ public class MainController {
 
     //    @PostMapping("/form")
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String create(@ModelAttribute Product product, Model model){
+    public String create(@ModelAttribute Product product, Model model) {
         System.out.println("POST product - " + product);
         model.addAttribute("product", product);
 //        Product addProd = new Product(product.getId(), product.getName(),  product.getCost());

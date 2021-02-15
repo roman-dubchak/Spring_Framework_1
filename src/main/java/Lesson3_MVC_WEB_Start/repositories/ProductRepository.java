@@ -12,13 +12,13 @@ public class ProductRepository {
 
     @PostConstruct
     public void init() {
-        listProduct =  new ArrayList<>();
-        listProduct.add(new Product(1, "Potato",20));
-        listProduct.add(new Product(2, "Orange",40));
-        listProduct.add(new Product(3, "Tomato",38));
-        listProduct.add(new Product(4, "Carrot",10));
-        listProduct.add(new Product(5, "Onion",7));
-        listProduct.add(new Product(6, "Apple",25));
+        listProduct = new ArrayList<>();
+        listProduct.add(new Product(1, "Potato", 20));
+        listProduct.add(new Product(2, "Orange", 40));
+        listProduct.add(new Product(3, "Tomato", 38));
+        listProduct.add(new Product(4, "Carrot", 10));
+        listProduct.add(new Product(5, "Onion", 7));
+        listProduct.add(new Product(6, "Apple", 25));
         System.out.println("The repository contains: " + (listProduct.toArray().toString()));
     }
 
@@ -29,7 +29,7 @@ public class ProductRepository {
     public Product getProduct(Integer id) {
         Product product = new Product();
         for (int i = 0; i < listProduct.size(); i++) {
-            if(id.equals(listProduct.get(i).getId()));
+            if (id.equals(listProduct.get(i).getId())) ;
             product = listProduct.get(i);
         }
         return product;

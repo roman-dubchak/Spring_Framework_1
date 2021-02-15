@@ -41,7 +41,7 @@ public class ClientDAO {
         try {
             client = (Client) query.getSingleResult();
             System.out.println("Find " + client);
-        } catch (NoResultException e){
+        } catch (NoResultException e) {
             System.out.println("Not find product by id: " + id);
             client = new Client();
         }
@@ -55,7 +55,7 @@ public class ClientDAO {
         return client;
     }
 
-    public List<Client> findAllClients(){
+    public List<Client> findAllClients() {
         return clientFactory.manager.createNamedQuery("Client.findAll", Client.class).getResultList();
     }
 

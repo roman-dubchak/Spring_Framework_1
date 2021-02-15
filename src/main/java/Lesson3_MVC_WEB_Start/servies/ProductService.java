@@ -16,11 +16,11 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getListProducts(){
-       return productRepository.getListProduct();
+    public List<Product> getListProducts() {
+        return productRepository.getListProduct();
     }
 
-    public Product getProductByID(Integer id){
+    public Product getProductByID(Integer id) {
         return productRepository.getProduct(id);
     }
 

@@ -24,7 +24,7 @@ public class Product {
     @Column(name = "price")
     private int price;
 
-    @Column(name = "created_date", updatable=false)
+    @Column(name = "created_date", updatable = false)
     @CreationTimestamp
     private Timestamp created_at;
 

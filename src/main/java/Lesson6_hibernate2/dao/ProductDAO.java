@@ -14,8 +14,8 @@ import java.util.List;
 @Component
 public class ProductDAO {
 
-    public static class ProductFactory{
-        private  EntityManagerFactory factory = new Configuration()
+    public static class ProductFactory {
+        private EntityManagerFactory factory = new Configuration()
                 .configure("hibernate2.xml")
                 .buildSessionFactory();
 
@@ -47,7 +47,7 @@ public class ProductDAO {
         try {
             product = (Product) query.getSingleResult();
             System.out.println("Find " + product);
-        } catch (NoResultException e){
+        } catch (NoResultException e) {
             System.out.println("Not find product by id: " + id);
             product = new Product();
         }
@@ -61,19 +61,19 @@ public class ProductDAO {
         return product;
     }
 
-    public List<Product> findAllProducts(){
+    public List<Product> findAllProducts() {
         return productFactory.manager.createNamedQuery("Product.findAll", Product.class).getResultList();
     }
 
     // Здесь сибираем лист лонгов - id продуктов
-    public List<Long> findAllProductByIdClient(Long idClient){
+    public List<Long> findAllProductByIdClient(Long idClient) {
         Query query = productFactory.manager.createQuery("select id from Product where client_id = :id");
         query.setParameter("id", idClient);
         List<Long> productIdList;
-        try{
+        try {
             productIdList = query.getResultList();
             System.out.println(productIdList);
-        } catch (NoResultException e){
+        } catch (NoResultException e) {
             System.out.println("Not find list product by id: " + idClient);
             productIdList = new ArrayList<>();
         }
@@ -83,7 +83,7 @@ public class ProductDAO {
     // Здесь списко клиентов, но по сути получается достать только 1 клиента
     // Пытался использовать запрос select id from product_buy where client_id = 1;
     // но нельзя создать поле client_id, так как уже указано как вшешний ключ в JOIN
-    public List<Long> findAllClientByIdProduct(Long id){
+    public List<Long> findAllClientByIdProduct(Long id) {
         Product product = findById(id);
         List<Long> clientIdtList = new ArrayList<>();
         clientIdtList.add(product.getClient().getId());

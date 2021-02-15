@@ -1,11 +1,12 @@
 package Lesson1_ProductBeans;
 
 import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class Cart implements CartInterface{
+public class Cart implements CartInterface {
     private Map<Integer, Product> mapCart = new HashMap<Integer, Product>();
 
     @Override

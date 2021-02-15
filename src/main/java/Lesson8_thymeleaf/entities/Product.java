@@ -1,4 +1,4 @@
-package Lesson7_hibernate3.entities;
+package Lesson8_thymeleaf.entities;
 
 import javax.persistence.*;
 
@@ -6,8 +6,8 @@ import javax.persistence.*;
 @Table(name = "product_liq")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, updatable = false)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column (name = "id", nullable = false, updatable = false)
     private Long id;
 
     @Column(name = "title")
@@ -51,6 +51,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return String.format("id - %d; name - %s; cost - %d\n.", id, title, price);
+        return String.format("Product: id - %d; title - %s; price - %d\n.",id, title, price);
     }
 }
